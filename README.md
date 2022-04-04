@@ -1,4 +1,4 @@
-# Ontario energy analysis
+# ontario-energy-analysis
 
 This repo contains the code and data used to conduct an analysis of Ontario's carbon footprint by looking into greenhouse gas emission intensities, energy usage, and pollution data for thousands of large commercial buildings throughout the province. 
 
