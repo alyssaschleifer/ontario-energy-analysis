@@ -1,5 +1,5 @@
 ---
-title: "Modeling Greenhouse Gas Emissions Based on Sustainability Metrics^[Code and data supporting this analysis are available at: https://github.com/alyssaschleifer/ontario-energy-analysis]"
+title: "Ontario Greenhouse Gas Emissions Vary Based on Numerous Environmental Metrics^[Code and data supporting this analysis are available at: https://github.com/alyssaschleifer/ontario-energy-analysis]"
 author: "Alyssa Schleifer"
 date: "27 April 2022"
 abstract: "Data from recent years shows that Canada is falling behind other G20 nations in regards to improving its sustainable consumption and environmental performance in the face of a worsening global climate crisis. By analyzing data regarding energy and water usage of large buildings across Ontario, we can gain insight into several different metrics of environmental performance and determine their overall impact on greenhouse gas emissions. In order to achieve this, I used a multiple linear regression model to determine the relationship between variables such as water and electricity usage and overall greenhouse emissions to draw conclusions on the prevalence of these factors regarding their overall environmental impact. The findings of this analysis showed that many of the most commonly used energy sources and environmental metrics each have notable, yet vastly different effects on total emissions. \\par\\textbf{Keywords:} environmental performance, greenhouse gas emissions, multiple linear regression, sustainability metrics, climate change"
@@ -461,7 +461,7 @@ stepwise_model <- step(natural_noinf, direction='both')
 
 # Results 
 
-Our analysis set out to uncover some of the factors that pose the greatest threat to sustainability. In order to do this, we will analyze the results of the model to detect relationships between greenhouse gas emissions and several other variables that might be affecting this outcome. Table 3 shows the results from the regression output.   
+Our analysis set out to uncover some of the factors that pose the greatest threat to sustainability. In order to do this, we will analyze the results of the model to detect relationships between greenhouse gas emissions and several other variables that might be affecting this outcome. Table 2 shows the results from the regression output.   
 
 ```{r, echo=FALSE}
 modelsummary(stepwise_model,
