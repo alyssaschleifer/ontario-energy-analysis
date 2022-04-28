@@ -1,0 +1,135 @@
+﻿EWRB_ID,Ontario Energy and Water Reporting and Benchmarking Identifier,"An EWRB ID is a unique six-digit identifier assigned by the Ontario government to each building that may be required to report data under Ontario Regulation 506/18. The EWRB ID for a building remains the same each year, even if a building is bought or sold.","When the exact number and/or configuration of buildings on a property is unknown, a single EWRB ID is assigned to the entire property as defined in a land registry and uniquely identified by the Municipal Property Assessment Corporation with a 15-digit Assessment Roll Number.
+The general assumption is that there is a single building on a single property and that the EWRB ID is unique to a single building (not the lot upon which it sits); however, this is often unconfirmed and it is possible that building owners can report on multiple individual structures using a single EWRB ID. Conversely, when multiple individual buildings sit on a single lot (uniquely identified by an Assessment Roll Number), the province may assign a unique EWRB ID to each building and the owners may report on each building individually.
+",Integer,,,,100000-999999,6,FALSE,000000,Nominal,100110
+City,City,"The municipal location of a building, provided by the reporter.","City values are self-reported and not selected from a standardized list, so they may not match standardized values such as those used by the Municipal Property Assessment Corporation, land registries or governments. 
+Between records, there may be variation (e.g., Ottawa, City of Ottawa). 
+Different values may not necessarily identify mutually exclusive geographic areas (e.g., 'Scarborough' and 'North York' could both identify buildings located in the City of Toronto).
+",Text,,,,,N/A,FALSE,,Nominal,Thunder Bay
+Postal_Code,Postal Code,"The first three digits of the postal code for a building (not necessarily the owning organization's mailing address), provided by the reporter.","Postal code values are self reported and may not exactly match the postal code used by the Municipal Property Assessment Corporation, municipalities, Canada Post or other address-managing organizations.
+Postal code values are not verified; occasionally, postal codes are submitted that do not appear to correctly match the Address1 and/or City values provided by the same reporter.
+",Text,,,,,7,FALSE,A0A0A0 or A0A 0A0,Nominal,K1A 0A6
+PrimPropTypCalc,Primary Property Type - Portfolio Manager-Calculated,Primary use type is the activity that occupies the largest gross floor area in a building. It is calculated by the Portfolio Manager software according to the gross floor areas reported by the reporter for each use type in a building.,"When the gross floor area of no single property use is greater than 50% of the total gross floor area of a building, Portfolio Manager assigns a building the ""Mixed Use"" value for this variable.
+Portfolio Manager uses the Primary Property Type - Portfolio Manager-Calculated variable to determine a building's peer group for comparisons (i.e., ENERGY STAR Score or national energy intensity median). Canadian national median data are available here: https://portfoliomanager.energystar.gov/pdf/reference/Canadian%20National%20Median%20Table.pdf 
+",Text,See possible value entries in the Values worksheet under the PrimPropTypCalc column.,,,,N/A,FALSE,,Nominal,Multifamily Housing
+PrimPropTypSelf,Primary Property Type - Self-selected,"The  primary use type of a building, selected by the reporter (not calculated by Portfolio Manager).","This variable uses the same universe of values as the PrimPropTypCalc variable but is simply selected by the reporter instead of calculated after the reporter has entered the area for all use types within a building. Therefore, the value may not match the PrimPropTypCalc value. This value may also be different from the PrimPropTypCalc value when Portfolio Manager calculates a ""Mixed Use"" value for that variable.",Text,See possible value entries in the Values worksheet under the PrimPropTypSelf column.,,,,N/A,FALSE,,Nominal,Multifamily Housing
+Largest_PropTyp,Largest Property Use Type,The largest property use type by area in a building.,"This variable uses the same universe of values as the PrimPropTypCalc and PrimPropTypSelf variables. It is calculated by Portfolio Manager according to the area information for each use type in a building, provided by the reporter.",Text,See possible value entries in the Values worksheet under the Largest_PropTyp column.,,,,N/A,FALSE,,Nominal,Multifamily Housing
+All_Prop_Types,List of All Property Use Types at a building,"A list of all property use types, provided by the reporter.","This variable uses the same universe of values as the PrimPropTypCalc, PrimPropTypSelf and Largest_PropTyp variables. For this variable, Portfolio Manager simply collates alphabetically all of the use types the reporter has provided. Types are separated by a comma and ordered alphabetically, not by area.",Text,,Values may be any combined permutation of the values listed on the Values worksheet in the PrimPropTypCalc column.,,,N/A,FALSE,,Nominal,"Multifamily Housing, Parking, Swimming Pool"
+Thrd_Party_Cert,Third-party Certifications,"A list of building certifications, provided by the reporter.","Entries for this field are free-form and unverified, so value format is not standardized. If applicable, most reporters list building certifications awarded by the Building Owners and Managers Association of Canada (BOMA) or the Canada Green Building Council (i.e., LEED). If a building has more than one certification, it appears that most reporters separate the individual certifications with a comma. Some reporters may mistakenly enter the names of professionals (e.g., engineers) who have reviewed building reporting data or inspected a building.",Text,,,,,N/A,TRUE,,Nominal,"BOMA BEST, LEED"
+WN_Sit_Elc_Int1,Weather-normalized Site Electricity Intensity (GJ/m2),"The annual average electricity, measured in gigajoules, used per square meter at a building, provided by the reporter. These values are weather-normalized and not climate-normalized.","Portfolio Manager weather-normalizes data by using a 30-year average to determine annual consumption in an average year (even if the particular year in question was hotter or colder than average). This lets you accurately compare the performance of a building in different years. For more information on how Portfolio Manager weather-normalizes usage data, search the Frequently Asked Questions at https://portfoliomanager.zendesk.com. While whese values are weather-normalized, they are NOT climate-normalized. Observations from different climatic areas cannot be compared directly (for example, Sudbury is normally colder than Toronto regardless of annual weather variation and identical buildings hosting identical activities in these two locations would use different amounts of energy--a building in Sudbury would normally use more due to a higher winter heating load). 
+
+Portfolio Manager does not weather-normalize energy use data for single reporting periods greater than 65 days.
+
+""Site"" is used in contrast to ""Source"". 'Site' energy denotes the energy used right at a building, whereas 'Source' energy denotes total energy, including the energy used to create and deliver that site energy to a building. For example, a natural-gas-fired power plant burns natural gas to generate electricity and energy is lost in that conversion, then some electricity is lost as it is transmitted across wires from the generation site to a building. 'Source' energy includes all the energy contained in the natural gas and the energy lost during transmission. For a more detailed explanation, search the Frequently Asked Questions at https://portfoliomanager.zendesk.com.
+
+To calculate intensity, Portfolio Manager uses a building's reported Gross Floor Area (GFA). For more information on which parts of a building are included and excluded in GFA, search the Frequently Asked Questions at https://portfoliomanager.zendesk.com.
+
+Reporters normally report their electricity usage in kilowatt hours. We have converted the reported values to gigajoules (GJ) using the following factor: 0.0036 (1 kilowatt hour equals 0.0036 gigajoules).
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.16
+WN_Sit_Elc_Int2,Weather-normalized Site Electricity Intensity (kWh/ft2),"The annual average electricity, measured in kilowatt hours, used per square foot at a building, provided by the reporter. These values are weather-normalized and not climate-normalized.","This variable expresses the same phenomenon as the WN_Sit_Elc_Int2 variable and is simply provided in a different unit here for user convenience. 
+
+All Additional Notes regarding WN_Sit_Elc_Int1 apply to this variable too (except the conversion factor, which of course doesn't apply here).",Decimal,,,,,N/A,TRUE,,Interval/Ratio,4.04
+WN_Sit_Gas_Int1,Weather-normalized Site Natural Gas Intensity (GJ/m2),"The annual average natural gas, measured in gigajoules, used per square metre at a building, provided by the reporter. These values are weather-normalized and not climate-normalized.",See the Additional Notes for WN_Sit_Elc_Int1 for explanations of weather-normalization and site (vs source).,Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.34
+WN_Sit_Gas_Int2,Weather-normalized Site Natural Gas Intensity (m3/m2),"The annual average natural gas, measured in cubic metres, used per square metre at a building, provided by the reporter. These values are weather-normalized and not climate-normalized.","Natural gas is most commonly retailed in cubic metres, so the same phenomenon expressed by WN_Sit_Gas_Int2 is also provided in cubic metres for convenience.
+
+See the Additional Notes for WN_Sit_Elc_Int1 for explanations of weather-normalization and site (vs source).",Decimal,,,,,N/A,TRUE,,Interval/Ratio,9.13
+WN_Sit_Gas_Int3,Weather-normalized Site Natural Gas Intensity (m3/ft2),"The annual average natural gas, measured in cubic metres, used per square foot at a building, provided by the reporter. These values are weather-normalized and not climate-normalized.","This variable expresses the same phenomenon as WN_Sit_Gas_Int1 and WN_Sit_Gas_Int2 but with a different area unit (square feet instead of square metres).
+
+See the Additional Notes for WN_Sit_Elc_Int1 for explanations of weather-normalization and site (vs source).
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.85
+All_Water_Int1,All Water Use Intensity (m3/m2),"The annual average water, measured in cubic metres, used per square metre at a building, provided by the reporter. These values are not weather-normalized (or climate-normalized).
+","This variable expresses all water used at a building, whether indoors or outdoors (e.g., for irrigation). It is undetermined whether values for this variable represent only water used externally, only used indoors, or both--it is simply the total water used at the property.
+
+These values are not weather-normalized.
+
+An unfortunate limitation of the values for this variable is that the method for collection did not discriminate between reports of zero usage and non-reports. Therefore, it is unknown whether a '0.00' value is due to a reporter reporting that a building used no water, or that they simply did not report.",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.59
+All_Water_Int2,All Water Use Intensity (m3/ft2),"The annual average water, measured in cubic metres, used per square foot at a building, providedy by the reporter. These values are not weather-normalized (or climate-normalized).
+","This variable expresses the same phenomenon as All_Water_Int1 but with a different area unit (square feet instead of square metres).
+
+These values are not weather-normalized.
+
+See the Additional Notes for All_Water_Int1 regarding the limitations of zero-values for this variable.",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.06
+Ind_Water_Int1,Indoor Water Use Intensity (m3/m2),"The annual average water, measured in cubic metres, used per square metre inside a building, provided by the reporter. These values are not weather-normalized (or climate-normalized).
+","This variable represents only the water used inside a building (if the reporter chose to report indoor and all water use separately). 
+
+This variable is an optional sub-set of All_Water_Int1 and should represent indoor water use only. Reporting this variable was optional and many reporters did not do so (in which cases Portfolio Manager provided a ""Not Available"" value.",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.63
+Ind_Water_Int2,Indoor Water Use Intensity (m3/ft2),"The annual average water, measured in cubic metres, used per square foot inside a building, provided by the reporter. These values are not weather-normalized (or climate-normalized).
+",This variable expresses the same phenomenon as Ind_Water_Int1 but with a different area unit (square feet instead of square metres). Therefore all Additional Notes for Ind_Water_Int1 appyl to this variable too.,Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.06
+Site_EUI1,Site Energy Use Intensity (GJ/m2),"The total annual average energy use of all types, measured in gigajoules, per square metre at a building, calculated by Portfolio Manager. These values are not weather-normalized (or climate-normalized).
+","For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+
+This variable includes energy use from sources beyond just electricity and natural gas--most commonly, it comprises only electricity and natural gas, but it can include, district energy, diesel, propane, etc.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.96
+Site_EUI2,Site Energy Use Intensity (ekWh/ft2),"The total annual average energy use of all types, measured in equivalent kilowatt hours, per square foot at a building, calculated by Portfolio Manager. These values are not weather-normalized (or climate-normalized).
+","This variable expresses the same phenomenon as Site_EUI1 but with a different energy unit (equivalent kilowatt hours instead of gigajoules) and a different area unit (square feet instead of square metres).
+
+For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,24.74
+Source_EUI1,Source Energy Use Intensity (GJ/m2),"The total annual average energy use of all types by a building plus all of the production and delivery losses, measured in gigajoules, per square metre of a building, calculated by Portfolio Manager. These values are not weather-normalized (or climate-normalized).","For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+
+This variable includes energy use from sources beyond just electricity and natural gas--most commonly, it comprises only electricity and natural gas, but it can include, district energy, diesel, propane, etc.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,1.49
+Source_EUI2,Source Energy Use Intensity (ekWh/ft2),"The total annual average energy use of all types by a building plus all of the production and delivery losses, measured in equivalent kilowatt hours, per square foot of a building, calculated by Portfolio Manager. These values are not weather-normalized (or climate-normalized).","This variable expresses the same phenomenon as Source_EUI1 but with a different energy unit (equivalent kilowatt hours instead of gigajoules) and a different area unit (square feet intsead of square metres).
+
+For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.",Decimal,,,,,N/A,TRUE,,Interval/Ratio,38.57
+WN_Site_EUI1,Weather-normalized Site Energy Use Intensity (GJ/m2),"The total annual average energy use of all types, measured in gigajoules, per square metre at a building, calculated by Portfolio Manager. These values are weather-normalized but not climate-normalized.
+","For an explanation of weather normalization, see the Additional Notes for WN_Sit_Elc_Int1.
+
+For an explanation of 'sites' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+
+This variable includes energy use from sources beyond just electricity and natural gas--most commonly, it comprises only electricity and natural gas, but it can include, district energy, diesel, propane, etc.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,0.92
+WN_Site_EUI2,Weather-normalized Site Energy Use Intensity (ekWh/ft2),"The total annual average energy use of all types, measured in equivalent kilowatt hours, per square foot at a building, calculated by Portfolio Manager. These values are weather-normalized but not climate-normalized.
+","This variable expresses the same phenomenon as WN_Site_EUI1 but with a different energy unit (equivalent kilowatt hours instead of gigajoules) and a different area unet (square feet instead of square metres).
+
+For an explanation of weather normalization, see the Additional Notes for WN_Sit_Elc.Int1.
+
+For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,23.71
+WN_Source_EUI1,Weather-normalized Source Energy Use Intensity (GJ/m2),"The total annual average energy use of all types by a building plus all of the production and delivery losses, measured in gigajoules, per square metre of a building, calculated by Portfolio Manager. These values are weather-normalized but not climate-normalized.
+","For an explanation of weather normalization, see the Additional Notes for WN_Sit_Elc_Int1.
+
+For an explanation of 'sites' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+
+This variable includes energy use from sources beyond just electricity and natural gas--most commonly, it comprises only electricity and natural gas, but it can include, district energy, diesel, propane, etc.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,1.43
+WN_Source_EUI2,Weather-normalized Source Energy Use Intensity (ekWh/ft2),"The total annual average energy use of all types by a building plus all of the production and delivery losses, measured in equivalent kilowatt hours, per square foot of a building, calculated by Portfolio Manager. These values are weather-normalized but not climate-normalized.
+","This variable expresses the same phenomenon as WN_Source_EUI1 but with a different energy unit (equivalent kilowatt hours instead of gigajoules) and a different area unit (square feet instead of square metres).
+
+For an explanation of weather normalization, see the Additional Notes for WN_Sit_Elc_Int1.
+
+For an explanation of 'site' vs 'source', see the Additional Notes for WN_Sit_Elc_Int1.
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,36.93
+GHG_Emiss_Int1,GHG Emissions Intensity (kgCO2e/m2),"The estimated greenhouse gases emitted due to direct (site) and indirect (transmission and production) energy use of all types, measured in kilograms of carbon dioxide, per square meter of a building, calculated by Portfolio Manager.
+","These values are not normalized. 
+
+For a detailed explanation of how Portfolio Manager calculates GHG emissions, search for the Greenhouse Gas Emissions Technical Reference at https://portfoliomanager.zendesk.com/hc/en-us
+
+",Decimal,,,,,N/A,TRUE,,Interval/Ratio,25.83
+GHG_Emiss_Int2,GHG Emissions Intensity (kgCO2e/ft2),"The estimated greenhouse gases emitted due to direct (site) and indirect (transmission and production) energy use of all types, measured in kilograms of carbon dioxide, per square foot of a building, calculated by Portfolio Manager.
+",This variable expresses the same phenomenon as GHG_Emiss_Int1 but with a different area unit (square feet instead of square metres).,Decimal,,,,,N/A,TRUE,,Interval/Ratio,2.40
+Ener_Star_Score,ENERGY STAR Score,"The 1 – 100 ENERGY STAR score is a percentile score comparing a building's performance to national Canadian survey data of the same Portfolio Manager building type, calculated by Portfolio Manager.
+","An ENERGY STAR score is between 1 and 100. A score of 50 indicates that a building has performed at the median value of nationally surveyed buildings (not the buildings that use Portfolio Manager) for the specified time period. A score of 75 indicates that a building has performed better than 75% of nationally surveyed buildings for the specified period. The national data is collected via the Canadian Survey on Commercial and Institutional Energy Use.
+
+For more information on how ENERGY STAR scores are calculated, search for the ENERGY STAR Score Technical Reference at https://portfoliomanager.zendesk.com/hc/en-us
+
+Note that Portfolio Manager assigns ENERGY STAR scores to eligible buildings automatically, but obtaining certification (certifying the automated score) requires submitting an application to Natural Resources Canada and verification of the application by a licensed professional.
+",Integer,,,,1-100,3,TRUE,,Interval/Ratio,50
+Ener_Star_Certs,ENERGY STAR Certification - Year(s) Certified,"The year(s) in which the reporter reports that a building has received ENERGY STAR certification.
+","Currently, seven Portfolio Manager building types are eligible to apply for ENERGY STAR certification. For more information about the process building owners must complete to obtain ENERGY STAR certification, search for ENERGY STAR certification on the Natural Resources Canada or Government of Canada website.
+
+For this variable, ENERGY STAR certification is self-reported and has not been verified against an official Natural Resources Canada certification registry.",Date,,"Where a reporter has reported receiving ENERGY STAR certification in more than one year, date values are separated by a comma followed by a space character.",,2018-2019,4,TRUE,,Interval/Ratio,2018
+Data_Qual_Check,Data Quality Checker Run,"Whether the reporter ran Portfolio Manager's Data Quality Checker tool on the data they reported, reported by Portfolio Manager.
+","Portfolio Manager's Data Quality Checker runs a set of basic data checks to identify possible data entry errors and to see whether a building differs from typical operational patters.
+
+Reporters are able to submit reports without having run the Data Quality Checker.
+
+Reporters are able to submit reports after having run the Data Quality Checker but without addressing the possible data quality issues the checker identifies. In otherwords, the difference in quality of reports provided with and without running the Data Quality Checker is unknown.
+",Binary,"Yes
+No","Yes indicates that the Data Quality Checker was run at some point before the data was reported.
+
+No indicates that the Data Quality Checker was not run before the data was reported.
+",,,3,FALSE,,Nominal,Yes
+Data_Qual_Date,Data Quality Checker Date Run,"The date on which the Data Quality Checker tool was run, if it was run.
+","For information about the Data Quality Checker, see the Additional Notes for Data_Qual_Check.",Date,,"If the Data Quality Checker tool was not run, then a 'Not' value is provided.
+",,2018-06-27 - 2019-08-02,10,FALSE,YYYY-MM-DD,Interval/Ratio,2019-06-26
+,,,,,,,,,,,,,
